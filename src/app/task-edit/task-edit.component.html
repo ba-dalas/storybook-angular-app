@@ -24,7 +24,7 @@
 
         <div class="flex justify-end space-x-4">
           <button mat-raised-button color="primary" [disabled]="!taskForm.valid || !taskForm.dirty" type="submit"
-            (click)="save($event)">Save</button>
+            (click)="save()">Save</button>
           <button mat-raised-button color="warn" (click)="onBack()">Cancel</button>
 
         </div>

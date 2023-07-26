@@ -13,7 +13,7 @@ export class TaskEditComponent implements OnChanges, OnInit {
 
   taskForm!: FormGroup;
 
-  @Output() createOutput = new EventEmitter<Task>();
+  @Output() createOutput = new EventEmitter<any>();
 
 
   constructor(private fb: FormBuilder,
@@ -36,10 +36,10 @@ export class TaskEditComponent implements OnChanges, OnInit {
     this.location.back();
   }
 
-  save(event: any) {
-    const taskInfo: Task = { ...this.taskForm.value };
-    console.log(taskInfo)
-    this.createOutput.emit(taskInfo);
+  save() {
+    // const taskInfo: Task = { ...this.taskForm.value };
+    // console.log(taskInfo)
+    this.createOutput.emit(this.taskForm.value);
   }
 
   get taskName() {
