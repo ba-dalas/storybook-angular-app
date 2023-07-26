@@ -1,0 +1,13 @@
+<app-task-list
+[taskList]="taskInfoList$ | async"
+[pageSize]="pageSize"
+[totalElements]="totalElements"
+[errorMessage]="errorMessage"
+(pageChanged)="onPageChanged($any($event))"
+(onCreate)="createTask()"
+(view)="viewTask($any($event))"
+
+>
+
+</app-task-list>
+
