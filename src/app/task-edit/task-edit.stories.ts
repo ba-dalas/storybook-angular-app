@@ -12,6 +12,7 @@ import {
 } from '@storybook/angular';
 import { TaskEditComponent } from './task-edit.component';
 import { MatButtonModule } from '@angular/material/button';
+import { userEvent, within } from '@storybook/testing-library';
 
 export const actionsData = {
   createOutput: action('createOutput'),
@@ -41,10 +42,7 @@ const meta: Meta<TaskEditComponent> = {
   ],
   render: (args: TaskEditComponent) => ({
     props: {
-      ...args,
       createOutput: actionsData.createOutput,
-
-
     },
   }),
 };
@@ -52,9 +50,15 @@ const meta: Meta<TaskEditComponent> = {
 export default meta;
 type Story = StoryObj<TaskEditComponent>;
 
-export const TaskEditPageStory = () => ({
-  agrs: {},
+export const TaskEditPage: Story = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const buttons: HTMLElement[] = canvas.queryAllByRole('button');
+    const saveButton= buttons[0];
+    await userEvent.click(saveButton);
 
-});
+
+  },
+};
 
 

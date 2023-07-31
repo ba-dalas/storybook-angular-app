@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Task } from '../model/task-info.model';
 import { Location } from '@angular/common';
 
 @Component({
@@ -32,13 +31,11 @@ export class TaskEditComponent implements OnChanges, OnInit {
     });
   }
 
-  onBack() {
+  cancel() {
     this.location.back();
   }
 
   save() {
-    // const taskInfo: Task = { ...this.taskForm.value };
-    // console.log(taskInfo)
     this.createOutput.emit(this.taskForm.value);
   }
 

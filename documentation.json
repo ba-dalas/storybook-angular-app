@@ -255,7 +255,7 @@
         },
         {
             "name": "TaskEditComponent",
-            "id": "component-TaskEditComponent-68686309630d519ab6e795b3a6a663f31d2693eb38d8d5962f5a4b10fa55fd2f674ed8e351c8c49f4907d04caf16222670a092d58323be1f2690066224222cb1",
+            "id": "component-TaskEditComponent-f3f4132ee44fdfe01a5116acafcaba4978d03750918d8c3acbda47b16544c578e090f7c114777a736ea7a1c60bb1532631ba32564e4f26dfb10c31e86f931cd5",
             "file": "src/app/task-edit/task-edit.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -277,7 +277,7 @@
             "outputsClass": [
                 {
                     "name": "createOutput",
-                    "defaultValue": "new EventEmitter<Task>()",
+                    "defaultValue": "new EventEmitter<any>()",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 16,
@@ -374,7 +374,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { ChangeDetectionStrategy, Component, EventEmitter, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';\nimport { FormBuilder, FormGroup, Validators } from '@angular/forms';\nimport { Task } from '../model/task-info.model';\nimport { Location } from '@angular/common';\n\n@Component({\n  selector: 'app-task-edit',\n  templateUrl: './task-edit.component.html',\n  styleUrls: ['./task-edit.component.css'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class TaskEditComponent implements OnChanges, OnInit {\n\n  taskForm!: FormGroup;\n\n  @Output() createOutput = new EventEmitter<Task>();\n\n\n  constructor(private fb: FormBuilder,\n     private readonly location: Location) {}\n\n  ngOnInit(): void {\n    this.initForCreate();\n  }\n\n  ngOnChanges(changes: SimpleChanges): void {}\n\n  initForCreate() {\n    this.taskForm = this.fb.group({\n      taskName: ['', Validators.required],\n      taskPosition: ['', Validators.required],\n    });\n  }\n\n  onBack() {\n    this.location.back();\n  }\n\n  save() {\n    const taskInfo: Task = { ...this.taskForm.value };\n    console.log(taskInfo)\n    this.createOutput.emit(taskInfo);\n  }\n\n  get taskName() {\n    return this.taskForm.controls['taskName'];\n  }\n  get taskPosition() {\n    return this.taskForm.controls['taskPosition'];\n  }\n}\n",
+            "sourceCode": "import { ChangeDetectionStrategy, Component, EventEmitter, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';\nimport { FormBuilder, FormGroup, Validators } from '@angular/forms';\nimport { Task } from '../model/task-info.model';\nimport { Location } from '@angular/common';\n\n@Component({\n  selector: 'app-task-edit',\n  templateUrl: './task-edit.component.html',\n  styleUrls: ['./task-edit.component.css'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class TaskEditComponent implements OnChanges, OnInit {\n\n  taskForm!: FormGroup;\n\n  @Output() createOutput = new EventEmitter<any>();\n\n\n  constructor(private fb: FormBuilder,\n     private readonly location: Location) {}\n\n  ngOnInit(): void {\n    this.initForCreate();\n  }\n\n  ngOnChanges(changes: SimpleChanges): void {}\n\n  initForCreate() {\n    this.taskForm = this.fb.group({\n      taskName: ['', Validators.required],\n      taskPosition: ['', Validators.required],\n    });\n  }\n\n  onBack() {\n    this.location.back();\n  }\n\n  save() {\n    // const taskInfo: Task = { ...this.taskForm.value };\n    console.log(this.taskForm.value)\n    this.createOutput.emit(this.taskForm.value);\n  }\n\n  get taskName() {\n    return this.taskForm.controls['taskName'];\n  }\n  get taskPosition() {\n    return this.taskForm.controls['taskPosition'];\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -452,7 +452,7 @@
         },
         {
             "name": "TaskEditShellComponent",
-            "id": "component-TaskEditShellComponent-429b2e015997036ca1e13d7a72f06e865c97540bef628764254fb36807d441deafdb41027bdf4e1e9a7b8c433d34899d1c79acfa6555acc5b12409f7112e400d",
+            "id": "component-TaskEditShellComponent-55be5cdf77ef5e0dd03c039cbceaaa250714d5657fabe1abe0e54969f1fdddb6cd62b14cbca8b4a409714ca8aafc98aba36f144307ee0fc777ad82727aeb6865",
             "file": "src/app/task-edit-shell/task-edit-shell.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -486,7 +486,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 24,
+                    "line": 21,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -521,7 +521,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, OnInit } from '@angular/core';\nimport { Task } from '../model/task-info.model';\n\n@Component({\n  selector: 'app-task-edit-shell',\n  templateUrl: './task-edit-shell.component.html',\n  styleUrls: ['./task-edit-shell.component.css']\n})\nexport class TaskEditShellComponent implements OnInit {\n\n\n  constructor (\n\n  ) {}\n\n  ngOnInit (): void {\n\n  }\n\n\n\n\n\n  createTask (task: Task) {\n\n  }\n\n\n}\n",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\nimport { Task } from '../model/task-info.model';\n\n@Component({\n  selector: 'app-task-edit-shell',\n  templateUrl: './task-edit-shell.component.html',\n  styleUrls: ['./task-edit-shell.component.css']\n})\nexport class TaskEditShellComponent implements OnInit {\n\n\n  constructor (\n\n  ) {}\n\n  ngOnInit (): void {\n\n  }\n\n\n  createTask (task: Task) {\n\n  }\n\n\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -1240,7 +1240,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<TaskEditComponent>",
-                "defaultValue": "{\r\n  component: TaskEditComponent,\r\n  excludeStories: /.*Data$/,\r\n  tags: ['autodocs'],\r\n  decorators: [\r\n    moduleMetadata({\r\n      imports: [\r\n        CommonModule,\r\n        BrowserAnimationsModule,\r\n        ReactiveFormsModule,\r\n        MatIconModule,\r\n        MatInputModule,\r\n      ],\r\n    }),\r\n    // componentWrapperDecorator(\r\n    //   (story) => `<!doctype html><html lang=\"en\">\r\n    // <head><link href=\"https://fonts.googleapis.com/icon?family=Material+Icons\" rel=\"stylesheet\"></head>\r\n    // <body>${story}</body>\r\n    // </html>`\r\n    // ),\r\n  ],\r\n  render: (args: TaskEditComponent) => ({\r\n    props: {\r\n      ...args,\r\n      createOutput: actionsData.createOutput,\r\n    },\r\n  }),\r\n}"
+                "defaultValue": "{\r\n  component: TaskEditComponent,\r\n  excludeStories: /.*Data$/,\r\n  tags: ['autodocs'],\r\n  decorators: [\r\n    moduleMetadata({\r\n      imports: [\r\n        CommonModule,\r\n        BrowserAnimationsModule,\r\n        ReactiveFormsModule,\r\n        MatIconModule,\r\n        MatInputModule,\r\n        MatButtonModule\r\n      ],\r\n    }),\r\n    componentWrapperDecorator(\r\n      (story) => `<!doctype html><html lang=\"en\">\r\n    <head><link href=\"https://fonts.googleapis.com/icon?family=Material+Icons\" rel=\"stylesheet\"></head>\r\n    <body class=\"bg-teal-500 \">${story}</body>\r\n    </html>`\r\n    ),\r\n  ],\r\n  render: (args: TaskEditComponent) => ({\r\n    props: {\r\n      ...args,\r\n      createOutput: actionsData.createOutput,\r\n\r\n\r\n    },\r\n  }),\r\n}"
             },
             {
                 "name": "preview",
@@ -1260,7 +1260,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
-                "defaultValue": "() => ({\r\n  agrs: {},\r\n})"
+                "defaultValue": "() => ({\r\n  agrs: {},\r\n\r\n})"
             }
         ],
         "functions": [],
@@ -1298,7 +1298,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<TaskEditComponent>",
-                    "defaultValue": "{\r\n  component: TaskEditComponent,\r\n  excludeStories: /.*Data$/,\r\n  tags: ['autodocs'],\r\n  decorators: [\r\n    moduleMetadata({\r\n      imports: [\r\n        CommonModule,\r\n        BrowserAnimationsModule,\r\n        ReactiveFormsModule,\r\n        MatIconModule,\r\n        MatInputModule,\r\n      ],\r\n    }),\r\n    // componentWrapperDecorator(\r\n    //   (story) => `<!doctype html><html lang=\"en\">\r\n    // <head><link href=\"https://fonts.googleapis.com/icon?family=Material+Icons\" rel=\"stylesheet\"></head>\r\n    // <body>${story}</body>\r\n    // </html>`\r\n    // ),\r\n  ],\r\n  render: (args: TaskEditComponent) => ({\r\n    props: {\r\n      ...args,\r\n      createOutput: actionsData.createOutput,\r\n    },\r\n  }),\r\n}"
+                    "defaultValue": "{\r\n  component: TaskEditComponent,\r\n  excludeStories: /.*Data$/,\r\n  tags: ['autodocs'],\r\n  decorators: [\r\n    moduleMetadata({\r\n      imports: [\r\n        CommonModule,\r\n        BrowserAnimationsModule,\r\n        ReactiveFormsModule,\r\n        MatIconModule,\r\n        MatInputModule,\r\n        MatButtonModule\r\n      ],\r\n    }),\r\n    componentWrapperDecorator(\r\n      (story) => `<!doctype html><html lang=\"en\">\r\n    <head><link href=\"https://fonts.googleapis.com/icon?family=Material+Icons\" rel=\"stylesheet\"></head>\r\n    <body class=\"bg-teal-500 \">${story}</body>\r\n    </html>`\r\n    ),\r\n  ],\r\n  render: (args: TaskEditComponent) => ({\r\n    props: {\r\n      ...args,\r\n      createOutput: actionsData.createOutput,\r\n\r\n\r\n    },\r\n  }),\r\n}"
                 },
                 {
                     "name": "TaskEditPageStory",
@@ -1308,7 +1308,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
-                    "defaultValue": "() => ({\r\n  agrs: {},\r\n})"
+                    "defaultValue": "() => ({\r\n  agrs: {},\r\n\r\n})"
                 }
             ],
             ".storybook/preview.ts": [
